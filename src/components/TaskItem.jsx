@@ -1,8 +1,15 @@
-function TaskList() {
+import clsx from "clsx"
+
+function TaskList( { task, priority = "Medium"} ) {
     return (
-        <header>
-            <h1>Список проектів</h1>
-        </header>
+<li className={clsx(
+        priority === "High" && "high-priority",
+        priority === "Medium" && "medium-priority",
+        priority === "Low" && "low-priority"
+      )}>
+            {task} - <strong>{priority}</strong>
+            <button>Delete</button>
+        </li>
     )
 } 
 export default TaskList
