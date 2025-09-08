@@ -1,9 +1,10 @@
+import clsx from 'clsx'
 import TaskItem from './TaskItem'
  
 {/* аналог if */}
 function TaskList( { tasks } ) {
     return (
-        <ul>
+        <ul className={clsx("task-list", tasks.lenght >= 10 ? "many-tasks" : "few-tasks")}>
             {tasks.priority === "High" ? "! " : ""}
             {tasks.map((task) => (
                 <TaskItem
