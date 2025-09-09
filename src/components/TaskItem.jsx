@@ -1,6 +1,6 @@
 import clsx from "clsx"
 
-function TaskList( { task, priority = "Medium"} ) {
+function TaskItem( { task, priority = "Medium"} ) {
     return (
         <li className={clsx(
         "task-item",
@@ -13,4 +13,4 @@ function TaskList( { task, priority = "Medium"} ) {
         </li>
     )
 } 
-export default TaskList
+export default TaskItem
