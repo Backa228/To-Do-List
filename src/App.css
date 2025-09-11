@@ -12,7 +12,7 @@
   margin: 0 auto;
 }
 
-.maby-tasks{
+.many-tasks{
   background-color: #ffcccc;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .task-item:hover{
-  background-color: #424242aa;
+  background-color: #88a988;
 }
 
 .high-priority {
