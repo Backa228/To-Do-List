@@ -21,11 +21,6 @@ function TaskForm({onAdd}) {
                 name="text"
                 placeholder="New task..."
                 />
-                <Field type="email"
-                    name="email"
-                    placeholder="email"
-                >
-                </Field>
                 <Field as="select"
                     name="priority">
                     <option value="High">High</option>
@@ -35,7 +30,6 @@ function TaskForm({onAdd}) {
                 <button type="submit">Add task</button>
                 <br />
                 <ErrorMessage name='text' component='span' style={{ color: "red", fontSize: "0.8rem" }} />
-                <ErrorMessage name='email' component='span' style={{ color: "red", fontSize: "0.8rem" }} />
             </Form>
         </Formik>
         
