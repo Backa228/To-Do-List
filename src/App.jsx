@@ -36,12 +36,26 @@ function App() {
       task.id === id ? {...task, completed: !task.completed} : task
     ))
   }
+  
+  const order = {
+    High: 1, 
+    Medium: 2, 
+    Low: 3
+  }
+
+  const sortedTask = [...tasks].sort((a, b) => {
+    if (a.completed !== b.completed) {
+      return a.completed ? 1 : -1
+    }
+
+    return order[a.priority] - order[b.priority]
+  })
 
   return (
     <>
       <Header />
       <TaskForm onAdd={addTask} />
-      <TaskList tasks={tasks} onDelete={deleteTask} onToggle={toggleTask}/>
+      <TaskList tasks={sortedTask} onDelete={deleteTask} onToggle={toggleTask}/>
     </>
   )
 }
