@@ -52,3 +52,13 @@
   text-decoration: line-through;
   color: gray
 }
+
+.deadline{
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.overdue{
+  color: red;
+  font-weight: bold;
+}
