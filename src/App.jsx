@@ -37,7 +37,7 @@
   //   console.log(sorted2)
 
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Header from "./components/Header.jsx"
 import TaskList from "./components/TaskList.jsx"
@@ -46,16 +46,22 @@ import TaskForm from "./components/TaskForm.jsx"
 function App() {
   const [tasks, setTasks] = useState([
     // { id: 1, text: "Learn React", priority: "High", completed: false },
-    // { id: 2, text: "Build a To-Do App", priority: "Medium", completed: false },
-    // { id: 3, text: "Profit!", priority: "Low", completed: false },
-    // { id: 4, text: "Learn React", priority: "High", completed: false },
-    // { id: 5, text: "Build a To-Do App", priority: "Medium", completed: false },
-    // { id: 6, text: "Profit!", priority: "Low", completed: false },
-    // { id: 7, text: "Learn React", priority: "High", completed: false },
-    // { id: 8, text: "Build a To-Do App", priority: "Medium", completed: false },
-    // { id: 9, text: "Profit!", priority: "Low", completed: false },
-    // { id: 10, text: "Learn React", priority: "High", completed: false }
   ])
+useEffect(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    console.log("Loaded tasks from localStorage:", savedTasks);
+
+    if (savedTasks) {
+      const parsedTasks = JSON.parse(savedTasks);
+      console.log("Parsed tasks:", JSON.parse(savedTasks));
+      setTasks(parsedTasks);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    console.log("Saved tasks to localStorage:", JSON.stringify(tasks));
+  }, [tasks]);
 
   const addTask = (text, priority = "Medium", deadline = null) => {
     const newTask = {
@@ -91,10 +97,8 @@ function App() {
 
     if (a.deadline && b.deadline) {
       return new Date(a.deadline) - new Date(b.deadline)
-    } else if (a.deadline && !b.deadline) {
-      return -1;
-    } else if (!a.deadline && b.deadline) {
-      return 1;
+    } else if (a.deadline !== b.deadline) {
+      return new Date(a.deadline) - new Date(b.deadline);
     }
 
     return order[a.priority] - order[b.priority]
