@@ -1,0 +1,32 @@
+.form{
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+
+.formWrapper{
+    display: flex;
+    gap: 1rem;
+}
+
+.form input[type="text"],
+.form input[type="datetime-local"],
+.form input[type="time"],
+.form select{
+    padding: 0.75rem 1rem;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fdfdfd;
+    width: 100%;
+}
+
+.form input:focus, .form select:focus{
+    border-color: #d9e7ff;
+    box-shadow: 0 0 5px rgba(30,100,110,10)
+}

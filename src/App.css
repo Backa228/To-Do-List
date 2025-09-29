@@ -1,14 +1,25 @@
+*{
+  box-sizing: border-box;
+  font-family: "Inter", system-ur, sans-serif;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
-  color: black;
 }
+
+body{
+  background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 32%, rgba(237, 221, 83, 1) 100%);
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
 .task-list{
   list-style: none;
   padding: 0; 
-  max-width: 400px;
+
   margin: 0 auto;
 }
 
