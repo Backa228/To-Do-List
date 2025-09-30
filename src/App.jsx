@@ -44,6 +44,8 @@ import TaskList from "./components/TaskList.jsx"
 import TaskForm from "./components/TaskForm.jsx"
 import axios from "axios"
 
+import LanguageSelector from './components/LanguageSelector'
+
 function App() {
   const [tasks, setTasks] = useState([
     // { id: 1, text: "Learn React", priority: "High", completed: false },
@@ -133,6 +135,7 @@ function App() {
 
   return (
     <>
+      <LanguageSelector/>
       <Header />
       <TaskForm onAdd={addTask} />
       <TaskList tasks={sortedTask} onDelete={deleteTask} onToggle={toggleTask}/>
