@@ -1,29 +1,55 @@
 .langSelector {
-    position: relative;
-    display: inline-block;
-    color: white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    width: 65px;
 }
 
 .langSelector button {
-    background: none;
+    background: white;
     border: none;
     color: inherit;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 4px;
+    padding: 6px 12px;
+} 
+
+.langSelector button.active {
+    border-radius: 8px 8px 0 0;
+}
+
+.langSelector button:hover {
+    background-color: #d9e7ff;
 }
 
 .dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
     background: white;
+    width: 100%;
     color: black;
-    border-radius: 4px;
+    border-radius:  0 0 8px 8px;
+    border-top: 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 4px;
+    margin: 0;
     z-index: 10;
+    padding: 0;
+    max-height: 0;
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.dropdown.open {
+    max-width: 200px;
+    opacity: 1;
+    transform: translateY(0);
+    overflow: auto;
 }
 
 .dropdown li {
@@ -35,10 +61,19 @@
     width: 100%;
     background: none;
     border: none;
-    text-align: left;
+    text-align: center;
     cursor: pointer;
+    border-radius: 0;
 }
 
 .dropdown button:hover {
     background-color: #f0f0f0;
+}
+
+.downIcon{
+    transition: transform 0.3s ease;
+}
+
+.downIcon.activeIcon{
+    transform: rotate(180deg);
 }
