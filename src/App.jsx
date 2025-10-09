@@ -38,12 +38,11 @@
 
 
 import { useEffect, useState } from 'react'
-import './App.css'
+import './App.scss'
 import Header from "./components/Header.jsx"
 import TaskList from "./components/TaskList.jsx"
 import TaskForm from "./components/TaskForm.jsx"
 import axios from "axios"
-
 import LanguageSelector from './components/LanguageSelector'
 
 function App() {

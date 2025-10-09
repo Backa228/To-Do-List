@@ -1,3 +1,6 @@
+@use "sass:math";
+@import "./mixins.scss";
+
 *{
   box-sizing: border-box;
   font-family: "Inter", system-ur, sans-serif;
@@ -28,8 +31,11 @@ body{
 }
 
 .few-tasks{
-  background-color: #ccffcc;
+  background-color: #ffffff;
   margin: 20px;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 400px;
 }
 
 .task-item{
@@ -43,7 +49,7 @@ body{
 }
 
 .task-item:hover{
-  background-color: #88a988;
+  background-color: #b6e2b6;
 }
 
 .high-priority {
