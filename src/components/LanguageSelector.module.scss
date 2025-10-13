@@ -32,21 +32,22 @@
 .dropdown {
     background: white;
     width: 100%;
-    color: black;
-    border-radius:  0 0 8px 8px;
+    color: #333;
+    border-radius: 0 0 8px 8px;
     border-top: 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 0;
     z-index: 10;
+    margin: 0;
     padding: 0;
     max-height: 0;
+    opacity: 0;
     transform: translateY(-5px);
     transition: all 0.3s ease;
     overflow: hidden;
 }
 
 .dropdown.open {
-    max-width: 200px;
+    max-height: 200px;
     opacity: 1;
     transform: translateY(0);
     overflow: auto;

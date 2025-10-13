@@ -46,14 +46,6 @@ $responsiveType: 1;
     @return $result;
 }
 
-[class*="__Container"] {
-    max-width: toRem($maxWidthContainer);
-    min-width: toRem($minWidth);
-    padding-left: toRem($containerPadding);
-    padding-right: toRem($containerPadding);
-    margin: 0 auto;
-}
-
 //EM
 @function toEm($px, $current: 16) {
     $result: math.div($px, $current) + em;
@@ -202,4 +194,13 @@ $responsiveType: 1;
             grid-column: 3 / 4;
         }
     }
+}
+
+[class*="Container"] {
+    max-width: toRem($maxWidthContainer);
+    min-width: toRem($minWidth);
+    @include adaptiveValue("padding-left", $containerPadding, 10, 0, 1400, 320);
+    @include adaptiveValue("padding-right", $containerPadding, 10, 0, 1400, 320);
+    @include adaptiveValue("width", 1000, 300, 0, 1400, 320);
+    margin: 0 auto;
 }

@@ -1,9 +1,10 @@
 @use "sass:math";
 @import "./mixins.scss";
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
 
-*{
+* {
   box-sizing: border-box;
-  font-family: "Inter", system-ur, sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 #root {
@@ -19,10 +20,24 @@ body{
   color: #333;
 }
 
+header{
+  @include adaptiveValue("margin-bottom", 8, 4, 0, 1400, 320);
+}
+
+header p{
+  text-align: left;
+  font-weight: 500;
+  margin: 0;
+  @include adaptiveValue("font-size", 12, 8, 0, 1400, 320);
+  @include adaptiveValue("padding-left", 24, 10, 0, 1400, 320);
+  @include adaptiveValue("padding-right", 24, 10, 0, 1400, 320);
+  @include adaptiveValue("padding-top", 15, 7, 0, 1400, 320);
+  @include adaptiveValue("padding-bottom", 15, 7, 0, 1400, 320);
+}
+
 .task-list{
   list-style: none;
   padding: 0; 
-
   margin: 0 auto;
 }
 
@@ -35,7 +50,7 @@ body{
   margin: 20px;
   padding: 30px;
   border-radius: 15px;
-  max-width: 400px;
+  width: 950px;
 }
 
 .task-item{

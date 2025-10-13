@@ -41,8 +41,8 @@ function TaskForm({onAdd}) {
                         <FcAddRow className={styles.addIcon}/>
                     </button>
                 </div>
-                <ErrorMessage name='text' component='span' style={{ color: "red", fontSize: "0.8rem" }} />
-                <ErrorMessage name='deadline' component='span' style={{ color: "red", fontSize: "0.8rem" }} />
+                <ErrorMessage name='text' component='span' />
+                <ErrorMessage name='deadline' component='span'/>
             </Form>
         </Formik>
         

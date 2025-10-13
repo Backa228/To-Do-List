@@ -134,10 +134,12 @@ function App() {
 
   return (
     <>
-      <LanguageSelector/>
-      <Header />
-      <TaskForm onAdd={addTask} />
-      <TaskList tasks={sortedTask} onDelete={deleteTask} onToggle={toggleTask}/>
+      <LanguageSelector />
+      <div className='mainContainer'>
+        <TaskForm onAdd={addTask} />
+        <Header />
+        <TaskList tasks={sortedTask} onDelete={deleteTask} onToggle={toggleTask}/>
+      </div>
     </>
   )
 }
