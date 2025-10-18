@@ -3,6 +3,7 @@ import * as Yup from 'yup'
 import styles from "./TaskForm.module.scss"
 import { useTranslation } from 'react-i18next'
 import { FcAddRow } from "react-icons/fc";
+import { ChevronDown } from 'lucide-react';
 
 function TaskForm({onAdd}) {
     const { t } = useTranslation()
@@ -27,11 +28,14 @@ function TaskForm({onAdd}) {
                     </div>
                     <div className={styles.formField}>
                         <label htmlFor="priority">{t("priority")}:</label>
-                        <Field as="select" name="priority">
-                            <option value="High">{t("priorityHigh")}</option>
-                            <option value="Medium">{t("priorityMedium")}</option>
-                            <option value="Low">{t("priorityLow")}</option>
-                        </Field>
+                        <div className={styles.selectWrapper}>
+                            <Field as="select" name="priority">
+                                <option value="High">{t("priorityHigh")}</option>
+                                <option value="Medium">{t("priorityMedium")}</option>
+                                <option value="Low">{t("priorityLow")}</option>
+                            </Field>
+                            <ChevronDown className={styles.downIcon}/>
+                        </div>
                     </div>
                     <div className={styles.formField}>
                         <label htmlFor="deadline">{t("dateTime")}:</label>

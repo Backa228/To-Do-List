@@ -67,7 +67,7 @@ function App() {
       async function fetchTasks() {
       try {
         const response = await axios.get(
-        "https://my-json-server.typicode.com/AnneRom/TO-DO-LIST-API/tasks"
+        "https://my-json-server.typicode.com/Backa228/To-Do-List-API/tasks"
         );
         setTasks(response.data);
       } catch (e) {

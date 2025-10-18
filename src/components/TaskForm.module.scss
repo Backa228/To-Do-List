@@ -32,13 +32,17 @@
 .form input[type="datetime-local"],
 .form input[type="time"],
 .form select{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
     @include adaptiveValue("padding", 12, 8, 0, 1400, 320);
     border: 1px solid #ddd;
     border-radius: 8px;
-    @include adaptiveValue("font-size", 16, 10, 0, 1400, 320);
+    @include adaptiveValue("height", 50, 30, 0, 1400, 320);
+    @include adaptiveValue("font-size", 14, 8, 0, 1400, 320);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     background-color: #fdfdfd;
-    width: 100%;
     color: rgba(0, 0, 0, 0.634);
 }
 
@@ -46,7 +50,7 @@
 .form input[type="datetime-local"],
 .form input[type="time"] 
 {
-    @include adaptiveValue("width", 250, 100, 0, 1400, 320);
+    @include adaptiveValue("width", 250, 70, 0, 1400, 320);
 }
 
 .form select{
@@ -58,8 +62,25 @@
     box-shadow: 0 0 5px rgba(30,100,110,10)
 }
 
+.selectWrapper{
+    position: relative;
+    display: inline-block;
+    width: fit-content;
+}
+
+.downIcon{
+    position: absolute;
+    @include adaptiveValue("right", 12, 4, 0, 1400, 320);
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    @include adaptiveValue("width", 16, 10, 0, 1400, 320);
+    @include adaptiveValue("height", 16, 10, 0, 1400, 320);
+    color: #666;
+}
+
 .form span{
-    color: rgb(117, 112, 112);
+    color: rgb(255, 0, 0);
     font-weight: 700;
     @include adaptiveValue("font-size", 12, 8, 0, 1400, 320);
 }
@@ -71,7 +92,7 @@
     cursor: pointer;
     @include adaptiveValue("width", 50, 30, 0, 1400, 320);
     @include adaptiveValue("height", 50, 30, 0, 1400, 320);
-    padding: 2px;
+    padding: 0;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     align-self: flex-end;
 }

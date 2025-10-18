@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import {MdDelete} from "react-icons/md"
 
 function TaskItem({ task, onDelete, onToggle }) {
   const deadlineDate = task.deadline ? new Date(task.deadline) : null
@@ -16,20 +17,20 @@ function TaskItem({ task, onDelete, onToggle }) {
   return (
       <li className="task-item">
           <input type="checkbox" checked={task.completed} onChange={onToggle}/>
-          <span className={clsx(
+          <p className={clsx(
             task.completed && "completed",
             task.priority === "High" && "high-priority",
             task.priority === "Medium" && "medium-priority",
             task.priority === "Low" && "low-priority"
           )}>
         {task.text}
-      </span>
+      </p>
       {formattedDeadline && <div className={clsx(
         "deadline",
         isOverdue && "overdue"
       )}>{formattedDeadline}</div>}
 
-        <button onClick={onDelete}>Delete</button>
+        <button className="deleteBtn" onClick={onDelete}><MdDelete className="deleteIcon"/></button>
     </li>
   );
 }

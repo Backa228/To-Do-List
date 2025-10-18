@@ -10,5 +10,7 @@
     "errorTooLong": "Too long!",
     "addTask": "Add Task",
     "dateTime": "Date and Time",
-    "errorDeadline": "Datline can`t be in the past"
+    "errorDeadline": "Datline can`t be in the past",
+    "manyTask": "No tasks available",
+    "fewTask": "You have a lot of tasks!"
 }
