@@ -69,7 +69,7 @@ header p{
   align-items: center;
   gap: toRem(10);
   // flex-wrap: wrap;
-  word-break: break-word;
+  // word-break: break-word;
   @include adaptiveValue("font-size", 16, 12, 0, 1400, 320);
 }
 
@@ -123,6 +123,10 @@ header p{
   }
 }
 
+.task-item p{
+
+}
+
 .completed{
   text-decoration: line-through;
   color: gray;
@@ -151,6 +155,7 @@ header p{
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   padding: 0;
   overflow: hidden;
 }
