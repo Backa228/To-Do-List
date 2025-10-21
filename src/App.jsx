@@ -49,6 +49,33 @@ function App() {
   const [tasks, setTasks] = useState([
     // { id: 1, text: "Learn React", priority: "High", completed: false },
   ])
+
+  const order = {
+    High: 1, 
+    Medium: 2, 
+    Low: 3
+  }
+
+  const sortTasks = (list) => {
+    return [...list].sort((a, b) => {
+      if (a.completed !== b.completed) {
+      return a.completed ? 1 : -1
+    }
+
+    if (a.deadline && b.deadline) {
+      return new Date(a.deadline) - new Date(b.deadline)
+    } else if (a.deadline !== b.deadline) {
+      return a.deadline ? -1 : 1;
+    }
+
+    return order[a.priority] - order[b.priority]
+    })
+  }
+
+  useEffect(() => {
+    setTasks(prev => sortTasks(prev));
+  }, []);
+
   useEffect(() => {
     const savedTasks = localStorage.getItem("tasks");
     console.log("Loaded tasks from localStorage:", savedTasks);
@@ -57,7 +84,8 @@ function App() {
       try {
         const parsedTasks = JSON.parse(savedTasks);
         console.log("Parsed tasks:", JSON.parse(savedTasks));
-        setTasks(parsedTasks); 
+        // setTasks(parsedTasks); 
+        setTasks(sortTasks(parsedTasks)); 
         return
       } catch (e) {
         console.error("Failed to parse tasks from localStorage:", e);
@@ -69,7 +97,7 @@ function App() {
         const response = await axios.get(
         "https://my-json-server.typicode.com/Backa228/To-Do-List-API/tasks"
         );
-        setTasks(response.data);
+        setTasks(sortTasks(response.data));
       } catch (e) {
         console.error("Error fetching tasks:", e);
       }
@@ -99,38 +127,23 @@ function App() {
       completed: false,
       deadline
     };
-    setTasks([...tasks, newTask]);
+    setTasks(sortTasks([...tasks, newTask]));
   };
 
-  const deleteTask = (id) => {
-    setTasks(tasks.filter(task => task.id !== id))
+const deleteTask = (id) => {
+    // setTasks(tasks.filter(task => task.id !== id));
+    setTasks(prev => sortTasks(prev.filter(task => task.id !== id)));
   }
-
   const toggleTask = (id) => {
-    setTasks(tasks.map(task =>
-      task.id === id ? {...task, completed: !task.completed} : task
-    ))
+    // setTasks(tasks.map(task => 
+    //   task.id === id ? { ...task, completed: !task.completed } : task
+    // ));
+    setTasks(prev => sortTasks(
+    prev.map(task =>
+      task.id === id ? { ...task, completed: !task.completed } : task
+    )
+  ));
   }
-  
-  const order = {
-    High: 1, 
-    Medium: 2, 
-    Low: 3
-  }
-
-  const sortedTask = [...tasks].sort((a, b) => {
-    if (a.completed !== b.completed) {
-      return a.completed ? 1 : -1
-    }
-
-    if (a.deadline && b.deadline) {
-      return new Date(a.deadline) - new Date(b.deadline)
-    } else if (a.deadline !== b.deadline) {
-      return new Date(a.deadline) - new Date(b.deadline);
-    }
-
-    return order[a.priority] - order[b.priority]
-  })
 
   return (
     <>
@@ -138,7 +151,7 @@ function App() {
       <div className='mainContainer'>
         <TaskForm onAdd={addTask} />
         <Header />
-        <TaskList tasks={sortedTask} onDelete={deleteTask} onToggle={toggleTask}/>
+        <TaskList tasks={tasks} onDelete={deleteTask} onToggle={toggleTask}/>
       </div>
     </>
   )
