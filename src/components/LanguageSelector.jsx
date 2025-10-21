@@ -14,17 +14,21 @@ const LanguageSelector = () => {
     { code: 'ua', label: 'UA' },
   ];
 
-  const currentLang = i18n.language;
+  const currentLang = i18n.language || "en";
 
   const toggleDropdown = () => setOpen((prev) => !prev);
 
   const handleChangeLanguage = (code) => {
-    if (code === currentLang) {
-      setOpen(false)
-    } else {
+    // if (code === currentLang) {
+    //   setOpen(false)
+    // } else {
+    //   i18n.changeLanguage(code);
+    //   setOpen(false);
+    // }
+    if (code !== currentLang) {
       i18n.changeLanguage(code);
-      setOpen(false);
     }
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -42,7 +46,7 @@ const LanguageSelector = () => {
   return (
     <div ref={dropdownRef} className={styles.langSelector}>
       <button onClick={toggleDropdown} className={clsx(open && styles.active)}>
-        {/* {currentLang.toUpperCase()} */}
+        {currentLang.toUpperCase()}
         {currentLang?.split('-')[0].toUpperCase()}
         <ChevronDown size={16} className={clsx(styles.downIcon, open && styles.activeIcon)} />
       </button>
